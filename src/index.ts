@@ -3,8 +3,8 @@
 
 import { pinDirectoryToPinata } from "./utils";
 
-const dotenv = require("dotenv");
-const fs = require("fs");
+import * as dotenv from "dotenv";
+import fs from "fs";
 //const buildMetadata = require("./utils");
 //const publishMetadata = require("./utils");
 

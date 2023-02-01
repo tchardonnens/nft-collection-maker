@@ -11,7 +11,7 @@ dotenv.config();
 
 const PINATA_JWT = process.env.PINATA_JWT;
 
-export const pinDirectoryToPinata = async (path) => {
+export const pinDirectoryToPinata = async (path: string) => {
   const url = `https://api.pinata.cloud/pinning/pinFileToIPFS`;
   const src = path;
   var status = 0;
@@ -31,7 +31,7 @@ export const pinDirectoryToPinata = async (path) => {
       },
       body: data
     })
-      .on('uploadProgress', progress => {
+      .on('uploadProgress', (progress: any) => {
         console.log(progress);
       });
     return (JSON.parse(response.body));
@@ -40,7 +40,7 @@ export const pinDirectoryToPinata = async (path) => {
   }
 };
 
-export function buildMetadata(name, imageURL, description, attributes) {
+export function buildMetadata(name: string, imageURL: string, description: string, attributes: [Attribute] | null) {
   const metadata = {
     "name": name,
     "image": imageURL,
@@ -50,7 +50,7 @@ export function buildMetadata(name, imageURL, description, attributes) {
   return metadata;
 }
 
-export async function publishMetadata(metadata, collection) {
+export async function publishMetadata(metadata: Metadata, collection: string) {
   var axios = require('axios');
   var stringified_metadata = JSON.stringify(metadata)
   var data = JSON.stringify({
